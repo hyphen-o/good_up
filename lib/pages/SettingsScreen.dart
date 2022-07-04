@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class CloudScreen extends StatelessWidget {
+class SettingsScreen extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
@@ -9,11 +9,11 @@ class CloudScreen extends StatelessWidget {
         // Appbar
         appBar: AppBar(
           backgroundColor: Colors.blue[100],
-          title: Text(
-            'Cloud',
+          title: const Text(
+            'Settings',
             style: TextStyle(fontSize: 16),
           ),
         ),
-        body: Center(child: Icon(Icons.cloud)));
+        body: Center(child: Icon(Icons.home)));
   }
 }

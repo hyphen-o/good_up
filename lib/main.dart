@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import './pages/BookScreen.dart';
 import './pages/CakeScreen.dart';
 import './pages/CloudScreen.dart';
+import './pages/SettingsScreen.dart';
+
 void main() => runApp(MyApp());
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.
@@ -27,22 +29,27 @@ class _MyHomePageState extends State<MyHomePage> {
   static List<Widget> _pageList = [
     BookScreen(),
     CloudScreen(),
-    CakeScreen()
+    CakeScreen(),
+    SettingsScreen()
   ];
   // ページ下部に並べるナビゲーションメニューの一覧
   List<BottomNavigationBarItem> myBottomNavBarItems() {
     return [
       BottomNavigationBarItem(
-        icon: Icon(Icons.book),
-        label: 'Book',
+        icon: Icon(Icons.home),
+        label: 'Home',
       ),
       BottomNavigationBarItem(
-        icon: Icon(Icons.cloud),
-        label: 'Cloud',
+        icon: Icon(Icons.access_alarm),
+        label: 'Alarm',
       ),
       BottomNavigationBarItem(
-        icon: Icon(Icons.cake),
-        label: 'Cake',
+        icon: Icon(Icons.shopping_bag),
+        label: 'Shop',
+      ),
+      BottomNavigationBarItem(
+        icon: Icon(Icons.build_circle),
+        label: 'Settings',
       ),
     ];
   }
