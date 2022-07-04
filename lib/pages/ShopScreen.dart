@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-class CakeScreen extends StatelessWidget {
+class ShopScreen extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {

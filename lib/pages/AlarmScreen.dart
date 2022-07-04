@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class CloudScreen extends StatelessWidget {
+class AlarmScreen extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {

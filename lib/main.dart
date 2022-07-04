@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import './pages/BookScreen.dart';
-import './pages/CakeScreen.dart';
-import './pages/CloudScreen.dart';
+import './pages/HomeScreen.dart';
+import './pages/ShopScreen.dart';
+import './pages/AlarmScreen.dart';
 import './pages/SettingsScreen.dart';
 
 void main() => runApp(MyApp());
@@ -27,9 +27,9 @@ class _MyHomePageState extends State<MyHomePage> {
   int _screen = 0;
   // 表示する Widget の一覧
   static List<Widget> _pageList = [
-    BookScreen(),
-    CloudScreen(),
-    CakeScreen(),
+    HomeScreen(),
+    AlarmScreen(),
+    ShopScreen(),
     SettingsScreen()
   ];
   // ページ下部に並べるナビゲーションメニューの一覧
@@ -44,11 +44,11 @@ class _MyHomePageState extends State<MyHomePage> {
         label: 'Alarm',
       ),
       BottomNavigationBarItem(
-        icon: Icon(Icons.shopping_bag),
+        icon: Icon(Icons.shopping_cart),
         label: 'Shop',
       ),
       BottomNavigationBarItem(
-        icon: Icon(Icons.build_circle),
+        icon: Icon(Icons.build),
         label: 'Settings',
       ),
     ];
