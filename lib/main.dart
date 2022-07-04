@@ -10,7 +10,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'BottomNav',
+      title: 'Good Up',
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
@@ -18,6 +18,7 @@ class MyApp extends StatelessWidget {
     );
   }
 }
+
 class MyHomePage extends StatefulWidget {
   @override
   _MyHomePageState createState() => _MyHomePageState();
@@ -58,9 +59,9 @@ class _MyHomePageState extends State<MyHomePage> {
     return Scaffold(
       // Appbar
       appBar: AppBar(
-        backgroundColor: Colors.blue[900],
+        backgroundColor: Colors.lightBlue[900],
         title: Text(
-          'BottomNav',
+          'Good Up',
           style: TextStyle(fontSize: 16),
         ),
       ),

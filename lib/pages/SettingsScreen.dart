@@ -1,11 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:qr_flutter/qr_flutter.dart';
 
 class SettingsScreen extends StatelessWidget {
-  var _count = 0;
 
-  void _counter() {
-      _count = _count + 1;
-  }
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
@@ -18,13 +15,11 @@ class SettingsScreen extends StatelessWidget {
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: <Widget>[
-            Text("ボタンを押すとカウントアップします。"),
-            FloatingActionButton(
-              onPressed: _counter,
-              tooltip: 'Increment',
-              child: Icon(Icons.qr_code),
+            QrImage(
+            data: 'https://www.kamo-it.org/blog/36/',
+              version: QrVersions.auto,
+              size: 200.0,
             ),
-            Text('$_count'),
           ],
         ),
       ),
