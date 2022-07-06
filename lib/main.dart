@@ -10,7 +10,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      debugShowCheckedModeBanner: false, // この一文を追加
+      debugShowCheckedModeBanner: false,
       title: 'Good Up',
       theme: ThemeData(
         primarySwatch: Colors.blue,
