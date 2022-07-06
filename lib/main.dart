@@ -10,6 +10,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false, // この一文を追加
       title: 'Good Up',
       theme: ThemeData(
         primarySwatch: Colors.blue,
@@ -36,20 +37,21 @@ class _MyHomePageState extends State<MyHomePage> {
   // ページ下部に並べるナビゲーションメニューの一覧
   List<BottomNavigationBarItem> myBottomNavBarItems() {
     return [
-      BottomNavigationBarItem(
-        icon: Icon(Icons.home),
+      const BottomNavigationBarItem(
+        icon: Icon(Icons.home,color:Colors.black
+        ),
         label: 'Home',
       ),
       BottomNavigationBarItem(
-        icon: Icon(Icons.access_alarm),
+        icon: Icon(Icons.access_alarm,color:Colors.black),
         label: 'Alarm',
       ),
       BottomNavigationBarItem(
-        icon: Icon(Icons.shopping_cart),
+        icon: Icon(Icons.shopping_cart,color:Colors.black),
         label: 'Shop',
       ),
       BottomNavigationBarItem(
-        icon: Icon(Icons.build),
+        icon: Icon(Icons.build,color:Colors.black),
         label: 'Settings',
       ),
     ];

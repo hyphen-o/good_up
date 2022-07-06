@@ -71,6 +71,7 @@ class _AlarmState extends State<AlarmScreen> {
             Container(
               child: Center(
                 child: Column(
+
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
                     _timeSet
