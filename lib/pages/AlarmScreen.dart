@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_ringtone_player/flutter_ringtone_player.dart';
 
 class AlarmScreen extends StatefulWidget {
   @override
@@ -18,8 +19,8 @@ class _AlarmState extends State<AlarmScreen> {
   var _year = DateTime
       .now()
       .year;
-  int _hour=0;
-  int _minute=0;
+  int _hour = 0;
+  int _minute = 0;
   var timeInMillies;
 
 
@@ -60,12 +61,19 @@ class _AlarmState extends State<AlarmScreen> {
         startAlarmService(context);
       });
     }
+    if (_time == TimeOfDay.now()){
+      FlutterRingtonePlayer.playAlarm(
+        looping: true, // Androidのみ。ストップするまで繰り返す
+        asAlarm: true, // Androidのみ。サイレントモードでも音を鳴らす
+        volume: 0.1, // Androidのみ。0.0〜1.0
+      );
+    }
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("Alarm Manager")),
+      appBar: AppBar(title: Text("Alarm")),
       body: Builder(
         builder: (context) =>
             Container(

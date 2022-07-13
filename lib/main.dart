@@ -3,6 +3,7 @@ import './pages/HomeScreen.dart';
 import './pages/ShopScreen.dart';
 import './pages/AlarmScreen.dart';
 import './pages/SettingsScreen.dart';
+import './pages/SettingsScreen2.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
 
@@ -34,7 +35,7 @@ class _MyHomePageState extends State<MyHomePage> {
     HomeScreen(),
     AlarmScreen(),
     ShopScreen(),
-    SettingsScreen()
+    SettingsScreen2()
   ];
   // ページ下部に並べるナビゲーションメニューの一覧
   List<BottomNavigationBarItem> myBottomNavBarItems() {
