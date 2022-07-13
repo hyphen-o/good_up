@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "83334746033",
+    "project_id": "good-monning",
+    "storage_bucket": "good-monning.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:83334746033:android:66de75229ecef7b2f53790",
+        "android_client_info": {
+          "package_name": "com.example.good_monning"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "83334746033-jchrcbrasklcvpl66mnrtuutbppth22f.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBu_UBrjNO62eoFoAS_ZX_8HSExMSO63mU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "83334746033-jchrcbrasklcvpl66mnrtuutbppth22f.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

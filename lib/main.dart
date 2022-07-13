@@ -3,6 +3,8 @@ import './pages/HomeScreen.dart';
 import './pages/ShopScreen.dart';
 import './pages/AlarmScreen.dart';
 import './pages/SettingsScreen.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'firebase_options.dart';
 
 void main() => runApp(MyApp());
 class MyApp extends StatelessWidget {
