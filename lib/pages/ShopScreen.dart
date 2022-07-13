@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'PostPage.dart';
+
 var b_word = "テスト中です。";
 var ok = false;
 class ShopScreen extends StatelessWidget {
@@ -18,8 +20,9 @@ class ShopScreen extends StatelessWidget {
         ),
         floatingActionButton: FloatingActionButton(
             onPressed: () => {
-              // フローティングアクションボタンを押された時の処理.
-              print("フローティングアクションボタンをクリック")
+            Navigator.of(context).push(MaterialPageRoute(builder: (context) {
+              return PostPage();
+            }))
             },
             child: Icon(Icons.add)
         ),
