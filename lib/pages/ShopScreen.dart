@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
 import 'PostPage.dart';
@@ -26,10 +27,23 @@ class ShopScreen extends StatelessWidget {
             },
             child: Icon(Icons.add)
         ),
-      body: Center(
-        child: Text(
-            "ここにご褒美の情報が流れる"
-        ),
+      body: StreamBuilder<QuerySnapshot>(
+        stream: FirebaseFirestore.instance.collection("posts").snapshots(),
+        builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return Center(child: CircularProgressIndicator());
+          }
+          return ListView(
+            children: snapshot.data!.docs.map((DocumentSnapshot document) {
+              return Card(
+                child: ListTile(
+                  title: Text(document['content']),
+                  subtitle: Text("サブタイトル"),
+                ),
+              );
+            }).toList(),
+          );
+        },
       ),
         );
 

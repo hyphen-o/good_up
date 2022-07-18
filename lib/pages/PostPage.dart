@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
 class PostPage extends StatefulWidget {
@@ -19,6 +20,7 @@ class _PostPagePageState extends State<PostPage> {
       body: Center(
         child: TextField(
           controller: _textEditingController,
+          onSubmitted: _onSubmitted,
           enabled: true,
           maxLength: 50, // 入力数
           style: TextStyle(color: Colors.black),
@@ -32,5 +34,15 @@ class _PostPagePageState extends State<PostPage> {
         ),
       ),
     );
+  }
+
+  void _onSubmitted(String content) {
+    CollectionReference posts = FirebaseFirestore.instance.collection('posts');
+    posts.add({
+      "content": content
+    });
+
+    /// 入力欄をクリアにする
+    _textEditingController.clear();
   }
 }
