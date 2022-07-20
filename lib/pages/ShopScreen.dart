@@ -33,15 +33,43 @@ class ShopScreen extends StatelessWidget {
           if (snapshot.connectionState == ConnectionState.waiting) {
             return Center(child: CircularProgressIndicator());
           }
+
+          if (snapshot.hasError) {
+          return Center(
+          child: Text('取得できませんでした'),
+          );
+          }
+          //取得中の返り値を指定
+          if (!snapshot.hasData) {
+            return Center(
+              child: Text("Loading"),
+            );
+          };
           return ListView(
             children: snapshot.data!.docs.map((DocumentSnapshot document) {
+              Map<String, dynamic> message =
+              document.data()! as Map<String, dynamic>;
               return Card(
                 child: ListTile(
-                  title: Text(document['content']),
+                  title: Text(message['content']),
                   subtitle: Text("サブタイトル"),
                 ),
               );
             }).toList(),
+          );
+
+          Align(
+            alignment: Alignment.bottomCenter,
+            child: Padding(
+              padding: const EdgeInsets.only(bottom: 40),
+              child: ElevatedButton(
+                child: Text('Button'),
+                onPressed: () {},
+                style: ElevatedButton.styleFrom(
+                  minimumSize: Size(250, 50),
+                ),
+              ),
+            ),
           );
         },
       ),
