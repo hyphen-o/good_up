@@ -3,6 +3,7 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:qr_code_scanner/qr_code_scanner.dart';
+import 'package:flutter_ringtone_player/flutter_ringtone_player.dart';
 
 class SettingsScreen2 extends StatefulWidget {
   const SettingsScreen2({Key? key}) : super(key: key);
@@ -69,6 +70,16 @@ class _QrScanViewState extends State<SettingsScreen2> {
       this.controller = controller;
     });
     controller.scannedDataStream.listen((scanData) async {
+      if (scanData.code == null) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(
+            content: Text('QR code data does not exist'),
+          ),
+        );
+      } else {
+        if (scanData.code == 'Good_up アラーム停止')
+          FlutterRingtonePlayer.stop(); // アラームを停止する
+      }
       print(scanData.code);
     });
   }

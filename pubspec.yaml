@@ -32,6 +32,8 @@ dependencies:
     sdk: flutter
 
 
+  wakelock: any
+
   qr_flutter: ^4.0.0 #なるべく最新のものを使用してください
   qr_code_scanner: ^1.0.0 #なるべく最新のものを使用してください
 

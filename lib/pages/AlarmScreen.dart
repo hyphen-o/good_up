@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_ringtone_player/flutter_ringtone_player.dart';
 
+
 class AlarmScreen extends StatefulWidget {
   @override
   _AlarmState createState() => _AlarmState();
@@ -65,7 +66,7 @@ class _AlarmState extends State<AlarmScreen> {
       FlutterRingtonePlayer.playAlarm(
         looping: true, // Androidのみ。ストップするまで繰り返す
         asAlarm: true, // Androidのみ。サイレントモードでも音を鳴らす
-        volume: 0.1, // Androidのみ。0.0〜1.0
+        volume: 0.5, // Androidのみ。0.0〜1.0
       );
     }
   }

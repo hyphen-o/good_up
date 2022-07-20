@@ -16,7 +16,7 @@ class SettingsScreen extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           children: <Widget>[
             QrImage(
-            data: 'https://www.kamo-it.org/blog/36/',
+            data: 'Good_up アラーム停止',
               version: QrVersions.auto,
               size: 200.0,
             ),
