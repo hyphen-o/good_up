@@ -51,25 +51,22 @@ class ShopScreen extends StatelessWidget {
               document.data()! as Map<String, dynamic>;
               return Card(
                 child: ListTile(
+                  leading: Icon(Icons.shopping_cart),
                   title: Text(message['content']),
-                  subtitle: Text("サブタイトル"),
+                  subtitle: Text.rich(
+                    TextSpan(
+                      children: [
+                        WidgetSpan(child: Icon(Icons.monetization_on_outlined)), //引数「child」で表示するアイコンを指定
+                        TextSpan(text: message['money'])
+                      ],
+                    ),
+                  ),
+                  onTap: () {
+                    print('Tap');
+                  },
                 ),
               );
             }).toList(),
-          );
-
-          Align(
-            alignment: Alignment.bottomCenter,
-            child: Padding(
-              padding: const EdgeInsets.only(bottom: 40),
-              child: ElevatedButton(
-                child: Text('Button'),
-                onPressed: () {},
-                style: ElevatedButton.styleFrom(
-                  minimumSize: Size(250, 50),
-                ),
-              ),
-            ),
           );
         },
       ),
