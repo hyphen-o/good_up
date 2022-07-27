@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'dart:async';
 import 'package:good_monning/pages/FlutterOverboard.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import './pages/HomeScreen.dart';
@@ -38,7 +39,7 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-
+  bool child = false;
   // ページインデックス保存用
   int _screen = 0;
   // 表示する Widget の一覧
@@ -46,7 +47,6 @@ class _MyHomePageState extends State<MyHomePage> {
     HomeScreen(),
     AlarmScreen(),
     ShopScreen(),
-    SettingsScreen2()
   ];
   // ページ下部に並べるナビゲーションメニューの一覧
   List<BottomNavigationBarItem> myBottomNavBarItems() {
@@ -74,18 +74,62 @@ class _MyHomePageState extends State<MyHomePage> {
     final pref = await SharedPreferences.getInstance();
 
     if (pref.getBool('isAlreadyFirstLaunch') != true) {
-      Navigator.push(
-        context,
-        MaterialPageRoute(
-          builder: (context) => FlutterOverboardPage(),
-          fullscreenDialog: true,
-        ),
-      );
       pref.setBool('isAlreadyFirstLaunch', true);
+      _showSimpleDialog();
     }
   }
   void _setUser() async {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
+  }
+
+  Future _showSimpleDialog() async{
+    String result = "";
+    result = await showDialog(
+      barrierDismissible: false,
+      context: context,
+      builder: (BuildContext context) {
+        return SimpleDialog(
+          title: Text('えらんでね'),
+          children: <Widget>[
+            SimpleDialogOption(
+              child: ListTile(
+                leading: CircleAvatar(
+                  backgroundColor: Colors.orange.shade200,
+                  child: Icon(
+                    Icons.account_circle_outlined,
+                    color: Colors.black,
+                    size: 30.0,
+                  ),
+                ),
+                title: Text('子'),
+              ),
+              onPressed: () {
+                Navigator.pop(context);
+                child = true;
+                _pageList.add(SettingsScreen2());
+              },
+            ),
+            SimpleDialogOption(
+              child: ListTile(
+                leading: CircleAvatar(
+                  backgroundColor: Colors.grey.shade400,
+                  child: Icon(
+                    Icons.account_circle_outlined,
+                    color: Colors.black,
+                    size: 30.0,
+                  ),
+                ),
+                title: Text('親'),
+              ),
+              onPressed: () {
+                Navigator.pop(context);
+                _pageList.add(SettingsScreen());
+              },
+            ),
+          ],
+        );
+      },
+    );
   }
 
   @override
