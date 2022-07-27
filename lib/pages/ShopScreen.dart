@@ -25,7 +25,7 @@ class ShopScreen extends StatelessWidget {
               return PostPage();
             }))
             },
-            child: Icon(Icons.add)
+            child: Icon(Icons.add_shopping_cart)
         ),
       body: StreamBuilder<QuerySnapshot>(
         stream: FirebaseFirestore.instance.collection("posts").snapshots(),
@@ -35,9 +35,9 @@ class ShopScreen extends StatelessWidget {
           }
 
           if (snapshot.hasError) {
-          return Center(
-          child: Text('取得できませんでした'),
-          );
+            return Center(
+              child: Text('取得できませんでした'),
+            );
           }
           //取得中の返り値を指定
           if (!snapshot.hasData) {
@@ -45,10 +45,13 @@ class ShopScreen extends StatelessWidget {
               child: Text("Loading"),
             );
           };
+
           return ListView(
             children: snapshot.data!.docs.map((DocumentSnapshot document) {
               Map<String, dynamic> message =
               document.data()! as Map<String, dynamic>;
+
+
               return Card(
                 child: ListTile(
                   leading: Icon(Icons.shopping_cart),
@@ -63,9 +66,12 @@ class ShopScreen extends StatelessWidget {
                   ),
                   onTap: () {
                     print('Tap');
+                    message.remove(['content']);
+                    
                   },
                 ),
               );
+
             }).toList(),
           );
         },

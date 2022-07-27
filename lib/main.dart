@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:good_monning/pages/FlutterOverboard.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import './pages/HomeScreen.dart';
 import './pages/ShopScreen.dart';
 import './pages/AlarmScreen.dart';
@@ -34,7 +36,11 @@ class MyHomePage extends StatefulWidget {
   @override
   _MyHomePageState createState() => _MyHomePageState();
 }
+
 class _MyHomePageState extends State<MyHomePage> {
+
+
+
   // ページインデックス保存用
   int _screen = 0;
   // 表示する Widget の一覧
@@ -66,9 +72,28 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
     ];
   }
+  void _showTutorial(BuildContext context) async {
+    final pref = await SharedPreferences.getInstance();
+
+    //if (pref.getBool('isAlreadyFirstLaunch') != true) {
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => FlutterOverboardPage(),
+          fullscreenDialog: true,
+        ),
+      );
+      pref.setBool('isAlreadyFirstLaunch', true);
+    }
+  //}
+  void _setUser() async {
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+  }
 
   @override
   Widget build(BuildContext context) {
+    WidgetsBinding.instance.addPostFrameCallback((_) => _showTutorial(context));
+
     return Scaffold(
       // Appbar
       appBar: AppBar(
