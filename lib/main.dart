@@ -39,8 +39,6 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
 
-
-
   // ページインデックス保存用
   int _screen = 0;
   // 表示する Widget の一覧
@@ -75,7 +73,7 @@ class _MyHomePageState extends State<MyHomePage> {
   void _showTutorial(BuildContext context) async {
     final pref = await SharedPreferences.getInstance();
 
-    //if (pref.getBool('isAlreadyFirstLaunch') != true) {
+    if (pref.getBool('isAlreadyFirstLaunch') != true) {
       Navigator.push(
         context,
         MaterialPageRoute(
@@ -85,7 +83,7 @@ class _MyHomePageState extends State<MyHomePage> {
       );
       pref.setBool('isAlreadyFirstLaunch', true);
     }
-  //}
+  }
   void _setUser() async {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
   }

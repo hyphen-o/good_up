@@ -79,6 +79,22 @@ class _QrScanViewState extends State<SettingsScreen2> {
       } else {
         if (scanData.code == 'Good_up アラーム停止')
           FlutterRingtonePlayer.stop(); // アラームを停止する
+        var result = await showDialog<int>(
+          context: context,
+          barrierDismissible: false,
+          builder: (BuildContext context) {
+            return AlertDialog(
+              title: Text('確認'),
+              content: Text('20ポイントを受け取りました'),
+              actions: <Widget>[
+                FlatButton(
+                  child: Text('OK!'),
+                  onPressed: () => Navigator.of(context).pop(1),
+                ),
+              ],
+            );
+          },
+        );
       }
       print(scanData.code);
     });

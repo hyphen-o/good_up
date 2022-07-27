@@ -66,7 +66,8 @@ class ShopScreen extends StatelessWidget {
                   ),
                   onTap: () {
                     print('Tap');
-                    message.remove(['content']);
+                    print(message['money']);
+
                     
                   },
                 ),

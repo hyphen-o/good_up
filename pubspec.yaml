@@ -32,6 +32,7 @@ dependencies:
     sdk: flutter
   shared_preferences:
   flutter_overboard:
+  fcm_config:
 
 
 
@@ -43,6 +44,8 @@ dependencies:
   cupertino_icons: ^1.0.2
   firebase_core:
   cloud_firestore:
+  firebase_messaging:
+  flutter_local_notifications:
 
 dev_dependencies:
   flutter_test:
