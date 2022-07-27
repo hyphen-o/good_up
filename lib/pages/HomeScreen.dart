@@ -22,8 +22,7 @@ class HomeScreen extends StatelessWidget {
         body: const TabBarView(
           children: <Widget>[
             Center(
-              child:
-                Text('ただいま\n５０\nポイント',style: TextStyle(fontSize:30.0)),
+              child: Text('ただいま\n50\nポイント',style: TextStyle(fontSize:40.0)),
             ),
             Center(
               child: Text('メッセージ', style: TextStyle(fontSize: 30.0)),
