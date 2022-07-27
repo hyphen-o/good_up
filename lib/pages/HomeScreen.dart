@@ -1,37 +1,40 @@
 import 'package:flutter/material.dart';
-
 class HomeScreen extends StatelessWidget {
-  const HomeScreen({Key? key}) : super(key: key);
-
+  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return DefaultTabController(
-      initialIndex: 0, // 最初に表示するタブ
-      length: 2, // タブの数
-      child: Scaffold(
+    return Scaffold(
+        backgroundColor: Colors.white,
+        // Appbar
         appBar: AppBar(
           backgroundColor:Colors.deepOrange,
-          title: const Text('Home'),
-          bottom: const TabBar(
-            tabs: <Widget>[
-              Tab(text: 'ポイント'),
-              Tab(text: 'メッセージ'),
-            ],
+          title: Row(children: [
+            Text("ホーム"),
+          ]),
+        ),
+        body: Center(
+          child: Column(
+              children: <Widget>[
+                Container(
+                  decoration: BoxDecoration(
+                    // 枠線
+                    border: Border.all(color: Colors.black12, width: 20),
+                    // 角丸
+                    borderRadius: BorderRadius.circular(8),
+                  ),
+                  padding: EdgeInsets.all(100),
+                  child: Column(
+                  children: <Widget>[
+                    Text("ただいま",style: TextStyle(fontSize: 50),textAlign: TextAlign.left),
+                    Text('50',style: TextStyle(fontSize: 100,fontWeight: FontWeight.bold)),
+                    Text("ポイント",style: TextStyle(fontSize: 50),textAlign: TextAlign.right),
+                  ],
+                  ),
+                ),
+              ],
           ),
-        ),
-        body: const TabBarView(
-          children: <Widget>[
-            Center(
-              child: Text('ただいま\n50\nポイント',style: TextStyle(fontSize:40.0)),
-            ),
-            Center(
-              child: Text('メッセージ', style: TextStyle(fontSize: 30.0)),
-            ),
-          ],
-        ),
-      ),
+
+       ),
     );
   }
 }
-
-
