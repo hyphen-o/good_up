@@ -21,7 +21,6 @@ class _PostPagePageState extends State<PostPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: Icon(Icons.add_shopping_cart),
         title: Text("出品画面"),
         backgroundColor: Colors.lightGreen,
         centerTitle: true,
@@ -39,7 +38,7 @@ class _PostPagePageState extends State<PostPage> {
             obscureText: false,
             maxLines:1 ,
             decoration: const InputDecoration(
-              icon: Icon(Icons.speaker_notes),
+              icon: Icon(Icons.shopify),
               hintText: '投稿内容を記載します',
               labelText: 'ごほうび * ',
             ),
@@ -57,7 +56,7 @@ class _PostPagePageState extends State<PostPage> {
             obscureText: false,
             maxLines:1 ,
             decoration: const InputDecoration(
-              icon: Icon(Icons.money),
+              icon: Icon(Icons.monetization_on_outlined),
               hintText: '投稿内容を記載します',
               labelText: '値段 * ',
             ),
