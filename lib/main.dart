@@ -29,7 +29,6 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       home: MyHomePage(),
-      darkTheme: ThemeData.dark(),
     );
   }
 }
