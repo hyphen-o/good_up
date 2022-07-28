@@ -9,6 +9,7 @@ class SettingsScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text('SettingsScreen'),
+        backgroundColor: Colors.lightGreen,
       ),
 
       body: Center(

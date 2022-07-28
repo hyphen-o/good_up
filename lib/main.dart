@@ -137,14 +137,6 @@ class _MyHomePageState extends State<MyHomePage> {
     WidgetsBinding.instance.addPostFrameCallback((_) => _showTutorial(context));
 
     return Scaffold(
-      // Appbar
-      appBar: AppBar(
-        backgroundColor: Colors.lightBlue[900],
-        title: Text(
-          'Good Up',
-          style: TextStyle(fontSize: 16),
-        ),
-      ),
       // ページビュー
       body: _pageList[_screen],
       // ページ下部のナビゲーションメニュー

@@ -12,8 +12,10 @@ class HomeScreen extends StatelessWidget {
       length: 2, // タブの数
       child: Scaffold(
         appBar: AppBar(
-          backgroundColor:Colors.deepOrange,
+          leading: Icon(Icons.home),
+          backgroundColor:Colors.lightGreen,
           title: const Text('Home'),
+
           bottom: const TabBar(
             tabs: <Widget>[
               Tab(text: 'ポイント'),

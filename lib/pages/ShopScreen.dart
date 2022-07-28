@@ -15,7 +15,7 @@ class ShopScreen extends StatelessWidget {
         backgroundColor: Colors.yellow[100],
         // Appbar
         appBar: AppBar(
-          backgroundColor: Colors.yellow[100],
+          backgroundColor: Colors.lightGreen,
           title: Text(
             'Shop',
             style: TextStyle(fontSize: 16),

@@ -74,7 +74,11 @@ class _AlarmState extends State<AlarmScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("Alarm")),
+      appBar: AppBar(
+        leading: Icon(Icons.lock_clock),
+        title: Text("Alarm"),
+        backgroundColor: Colors.lightGreen,
+      ),
       body: Builder(
         builder: (context) =>
             Container(
