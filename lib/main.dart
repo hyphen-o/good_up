@@ -89,7 +89,7 @@ class _MyHomePageState extends State<MyHomePage> {
       context: context,
       builder: (BuildContext context) {
         return SimpleDialog(
-          title: Text('えらんでね'),
+          title: Text('あなたはどっち？'),
           children: <Widget>[
             SimpleDialogOption(
               child: ListTile(

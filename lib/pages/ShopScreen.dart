@@ -6,6 +6,8 @@ import 'PostPage.dart';
 var b_word = "テスト中です。";
 var ok = false;
 class ShopScreen extends StatelessWidget {
+  get firebase => null;
+
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
@@ -68,6 +70,34 @@ class ShopScreen extends StatelessWidget {
                     print('Tap');
                     print(message['money']);
 
+                    CollectionReference money = FirebaseFirestore.instance.collection('money');
+
+                    Map<String, dynamic> moneys =
+                    document.data()! as Map<String, dynamic>;
+                    print(moneys['wallet']);
+                    money.doc('money').update({
+                      'wallet': (int.parse(message['money'])).toString(),
+                    });
+                    CollectionReference messages = FirebaseFirestore.instance.collection('message');
+                    messages.add({
+                      "notice": message['content']
+                    });
+                    var result = showDialog<int>(
+                      context: context,
+                      barrierDismissible: false,
+                      builder: (BuildContext context) {
+                        return AlertDialog(
+                          title: Text('購入通知'),
+                          content: Text(message['content'] + 'を購入しました'),
+                          actions: <Widget>[
+                            FlatButton(
+                              child: Text('OK!'),
+                              onPressed: () => Navigator.of(context).pop(1),
+                            ),
+                          ],
+                        );
+                      },
+                    );
                     
                   },
                 ),
