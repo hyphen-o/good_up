@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import './home/PointScreen.dart';
+import './home/MessageScreen.dart';
+
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);
 
@@ -18,17 +21,15 @@ class HomeScreen extends StatelessWidget {
             ],
           ),
         ),
-        body: const TabBarView(
+        body: TabBarView(
           children: <Widget>[
-            Center(
-              child: Text('ただいま\n５０\nポイント', style: TextStyle(fontSize: 50.0)),
-            ),
-            Center(
-              child: Text('メッセージ', style: TextStyle(fontSize: 50.0)),
-            ),
+            PointScreen(),
+            MessageScreen(),
           ],
         ),
       ),
     );
   }
 }
+
+
