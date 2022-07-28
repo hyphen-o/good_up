@@ -76,8 +76,9 @@ class _AlarmState extends State<AlarmScreen> {
     return Scaffold(
       appBar: AppBar(
         leading: Icon(Icons.lock_clock),
-        title: Text("Alarm"),
+        title: Text("アラーム"),
         backgroundColor: Colors.lightGreen,
+        centerTitle: true,
       ),
       body: Builder(
         builder: (context) =>

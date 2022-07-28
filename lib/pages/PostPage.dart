@@ -21,7 +21,10 @@ class _PostPagePageState extends State<PostPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        leading: Icon(Icons.add_shopping_cart),
         title: Text("出品画面"),
+        backgroundColor: Colors.lightGreen,
+        centerTitle: true,
       ),
       body: Column(
         children: <Widget>[

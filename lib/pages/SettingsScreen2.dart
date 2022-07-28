@@ -37,6 +37,7 @@ class _QrScanViewState extends State<SettingsScreen2> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        leading: Icon(Icons.qr_code),
         title: Text('QR読み取り'),
         backgroundColor: Colors.lightGreen,
         centerTitle: true,

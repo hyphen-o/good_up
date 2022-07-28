@@ -8,8 +8,10 @@ class SettingsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('SettingsScreen'),
+        leading: Icon(Icons.qr_code),
+        title: Text('QRコード表示'),
         backgroundColor: Colors.lightGreen,
+        centerTitle: true,
       ),
 
       body: Center(

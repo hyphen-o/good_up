@@ -15,11 +15,13 @@ class ShopScreen extends StatelessWidget {
         backgroundColor: Colors.yellow[100],
         // Appbar
         appBar: AppBar(
+          leading: Icon(Icons.shopping_basket),
           backgroundColor: Colors.lightGreen,
           title: Text(
-            'Shop',
+            'ごほうびショップ',
             style: TextStyle(fontSize: 16),
           ),
+          centerTitle: true,
         ),
         floatingActionButton: FloatingActionButton(
             onPressed: () => {

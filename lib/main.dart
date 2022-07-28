@@ -29,6 +29,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       home: MyHomePage(),
+      darkTheme: ThemeData.dark(),
     );
   }
 }
@@ -52,21 +53,21 @@ class _MyHomePageState extends State<MyHomePage> {
   List<BottomNavigationBarItem> myBottomNavBarItems() {
     return [
       const BottomNavigationBarItem(
-        icon: Icon(Icons.home,color:Colors.black
+        icon: Icon(Icons.home,color:Colors.lightGreen
         ),
         label: 'Home',
       ),
       BottomNavigationBarItem(
-        icon: Icon(Icons.access_alarm,color:Colors.black),
+        icon: Icon(Icons.access_alarm,color:Colors.lightGreen),
         label: 'Alarm',
       ),
       BottomNavigationBarItem(
-        icon: Icon(Icons.shopping_cart,color:Colors.black),
+        icon: Icon(Icons.shopping_cart,color:Colors.lightGreen),
         label: 'Shop',
       ),
       BottomNavigationBarItem(
-        icon: Icon(Icons.build,color:Colors.black),
-        label: 'Settings',
+        icon: Icon(Icons.qr_code,color:Colors.lightGreen),
+        label: 'QR',
       ),
     ];
   }

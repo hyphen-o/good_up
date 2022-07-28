@@ -14,7 +14,8 @@ class HomeScreen extends StatelessWidget {
         appBar: AppBar(
           leading: Icon(Icons.home),
           backgroundColor:Colors.lightGreen,
-          title: const Text('Home'),
+          title: const Text('ホーム'),
+          centerTitle: true,
 
           bottom: const TabBar(
             tabs: <Widget>[
