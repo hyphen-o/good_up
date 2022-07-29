@@ -11,12 +11,14 @@ class PointScreen extends StatelessWidget {
     //return Text("ただいま\n $point ポイント",style:TextStyle(fontSize:40.0));
     return Scaffold(
       body: StreamBuilder<QuerySnapshot>(
-        stream: FirebaseFirestore.instance.collection("message").snapshots(),
+        stream: FirebaseFirestore.instance.collection("posts").snapshots(),
         builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
             return Center(child: CircularProgressIndicator());
           }
-            return Column(
+            return Text(
+              '',
+
           );
         },
       ),

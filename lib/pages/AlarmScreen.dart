@@ -75,7 +75,7 @@ class _AlarmState extends State<AlarmScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: Icon(Icons.lock_clock),
+        leading: Icon(Icons.access_alarm),
         title: Text("アラーム"),
         backgroundColor: Colors.lightGreen,
         centerTitle: true,
@@ -91,16 +91,32 @@ class _AlarmState extends State<AlarmScreen> {
                     _timeSet
                         ? Text(_time.toString().substring(10, 15))
                         : Container(),
-                    RaisedButton(
-                        child: Text('Select Time'),
+                    ButtonTheme(
+                      minWidth: 300.0,
+                      height: 200.0,
+                    child: ElevatedButton.icon(
+                        icon: const Icon(
+                          Icons.alarm_add,
+                          color: Colors.white,
+                        ),
+                        label: const Text('アラームを設定する'),
+                        style: ElevatedButton.styleFrom(
+                          primary: Colors.lightGreen,
+                          onPrimary: Colors.white,
+                        ),
                         onPressed: () {
                           _selectTime(context);
                         }),
+                    ),
                     _timeSet
-                        ? RaisedButton(
+                        ? ElevatedButton(
                       child: Text(
                           "Delete Alarm for ${_time.toString().substring(
                               10, 15)}"),
+                      style: ElevatedButton.styleFrom(
+                        primary: Colors.redAccent,
+                        onPrimary: Colors.white,
+                      ),
                       onPressed: () {
                         setState(() {
                           _timeSet = false;
