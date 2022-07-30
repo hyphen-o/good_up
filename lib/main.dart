@@ -61,7 +61,7 @@ class _MyHomePageState extends State<MyHomePage> {
         label: 'Alarm',
       ),
       BottomNavigationBarItem(
-        icon: Icon(Icons.shopping_cart,color:Colors.lightGreen),
+        icon: Icon(Icons.shopping_basket,color:Colors.lightGreen),
         label: 'Shop',
       ),
       BottomNavigationBarItem(

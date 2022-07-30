@@ -29,6 +29,7 @@ class ShopScreen extends StatelessWidget {
               return PostPage();
             }))
             },
+            backgroundColor: Colors.redAccent,
             child: Icon(Icons.add_shopping_cart)
         ),
       body: StreamBuilder<QuerySnapshot>(
