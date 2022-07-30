@@ -1,6 +1,7 @@
 import 'dart:developer';
 import 'dart:io';
 
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:qr_code_scanner/qr_code_scanner.dart';
 import 'package:flutter_ringtone_player/flutter_ringtone_player.dart';
@@ -15,6 +16,8 @@ class SettingsScreen2 extends StatefulWidget {
 class _QrScanViewState extends State<SettingsScreen2> {
   final GlobalKey qrKey = GlobalKey(debugLabel: 'QR');
   QRViewController? controller;
+
+  get snapshot => null;
 
   // In order to get hot reload to work we need to pause the camera if the platform
   // is android, or resume the camera if the platform is iOS.
@@ -80,6 +83,13 @@ class _QrScanViewState extends State<SettingsScreen2> {
         );
       } else {
         if (scanData.code == 'Good_up アラーム停止')
+          DocumentSnapshot snapshot = await FirebaseFirestore.instance.collection('money').doc('money').get();
+          print(snapshot['wallet']);
+          CollectionReference money = FirebaseFirestore.instance.collection('money');
+
+          money.doc('money').update({
+            'wallet': (int.parse(snapshot['wallet']) + 20).toString(),
+          });
           FlutterRingtonePlayer.stop(); // アラームを停止する
         var result = await showDialog<int>(
           context: context,

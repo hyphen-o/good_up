@@ -68,17 +68,14 @@ class ShopScreen extends StatelessWidget {
                       ],
                     ),
                   ),
-                  onTap: () {
+                  onTap: () async {
                     print('Tap');
-                    print(message['money']);
-
+                    DocumentSnapshot snapshot = await FirebaseFirestore.instance.collection('money').doc('money').get();
+                    print(snapshot['wallet']);
                     CollectionReference money = FirebaseFirestore.instance.collection('money');
 
-                    Map<String, dynamic> moneys =
-                    document.data()! as Map<String, dynamic>;
-                    print(moneys['wallet']);
                     money.doc('money').update({
-                      'wallet': (int.parse(message['money'])).toString(),
+                      'wallet': (int.parse(snapshot['wallet']) - int.parse(message['money'])).toString(),
                     });
                     CollectionReference messages = FirebaseFirestore.instance.collection('message');
                     messages.add({
