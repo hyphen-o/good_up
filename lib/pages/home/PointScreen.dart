@@ -5,49 +5,29 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 
 class PointScreen extends StatelessWidget {
   PointScreen({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
-    //return Text("ただいま\n $point ポイント",style:TextStyle(fontSize:40.0));
     return Scaffold(
+      body: StreamBuilder<QuerySnapshot>(
+        stream: FirebaseFirestore.instance.collection("money").snapshots(),
+        builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return Center(child: CircularProgressIndicator(),);
+          }
 
-      body: Align(
+          return ListView(
+            children: snapshot.data!.docs.map((DocumentSnapshot document) {
+              return Card(
+                child: ListTile(
 
-        alignment: Alignment.topCenter,
-        child: Container(
-          margin: EdgeInsets.only(
-            top: 50,
-          ),
-          width:200,
-          height: 200,
-          child: Text(
-
-            '',
-            textAlign: TextAlign.center
-              ,
-            style: TextStyle(
-              fontWeight: FontWeight.bold,
-              fontSize: 50,
-              color: Colors.white,
-            ),
-
-          ),
-          decoration: BoxDecoration(
-            color: Colors.lightGreen,
-            borderRadius: BorderRadius.circular(10),
-            boxShadow: [
-              BoxShadow(
-                offset: Offset(10, 10),
-                color: Theme.of(context).scaffoldBackgroundColor,
-                blurRadius: 20,
-              ),
-              BoxShadow(
-                offset: Offset(-10, -10),
-                color: Theme.of(context).scaffoldBackgroundColor,
-                blurRadius: 20,
-              ),
-            ],
-          ),
-        ),
+                  leading: Icon(Icons.monetization_on_outlined),
+                  title: Text('ポイント：　' + document['wallet']),
+                ),
+              );
+            }).toList(),
+          );
+        },
       ),
     );
   }

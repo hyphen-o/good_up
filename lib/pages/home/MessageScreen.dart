@@ -22,25 +22,6 @@ class MessageScreen extends StatelessWidget {
                 child: ListTile(
                   leading: Icon(Icons.new_releases),
                   title: Text(document['notice'] + 'が購入されました！'),
-                  onTap: () {
-                    var result = showDialog<int>(
-                      context: context,
-                      barrierDismissible: false,
-                      builder: (BuildContext context) {
-                        return AlertDialog(
-                          title: Text('購入通知'),
-                          content: Text('支払いが確認できました'),
-                          actions: <Widget>[
-                            FlatButton(
-                              child: Text('OK!'),
-                              onPressed: () => Navigator.of(context).pop(1),
-                            ),
-
-                          ],
-                        );
-                      },
-                    );
-                  }
                 ),
               );
             }).toList(),
