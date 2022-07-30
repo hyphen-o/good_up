@@ -22,7 +22,7 @@ class PointScreen extends StatelessWidget {
                 child: ListTile(
 
                   leading: Icon(Icons.monetization_on_outlined),
-                  title: Text('ポイント：　' + document['wallet']),
+                  title: Text('             ポイント：　' + document['wallet']),
                 ),
               );
             }).toList(),

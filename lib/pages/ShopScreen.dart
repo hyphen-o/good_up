@@ -79,7 +79,8 @@ class ShopScreen extends StatelessWidget {
                     });
                     CollectionReference messages = FirebaseFirestore.instance.collection('message');
                     messages.add({
-                      "notice": message['content']
+                      "notice": message['content'],
+                      "date": new DateTime.now()
                     });
                     var result = showDialog<int>(
                       context: context,
