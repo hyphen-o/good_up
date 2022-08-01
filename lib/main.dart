@@ -75,7 +75,14 @@ class _MyHomePageState extends State<MyHomePage> {
 
     if (pref.getBool('isAlreadyFirstLaunch') != true) {
       pref.setBool('isAlreadyFirstLaunch', true);
-      _showSimpleDialog();
+      await _showSimpleDialog();
+      pref.setBool('child', child);
+    }
+    bool? _child = pref.getBool('child');
+    if (_child == true) {
+      _pageList.add(SettingsScreen2());
+    } else {
+      _pageList.add(SettingsScreen());
     }
   }
   void _setUser() async {
@@ -83,8 +90,7 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   Future _showSimpleDialog() async{
-    String result = "";
-    result = await showDialog(
+    await showDialog(
       barrierDismissible: false,
       context: context,
       builder: (BuildContext context) {
@@ -106,7 +112,6 @@ class _MyHomePageState extends State<MyHomePage> {
               onPressed: () {
                 Navigator.pop(context);
                 child = true;
-                _pageList.add(SettingsScreen2());
               },
             ),
             SimpleDialogOption(
@@ -123,7 +128,6 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
               onPressed: () {
                 Navigator.pop(context);
-                _pageList.add(SettingsScreen());
               },
             ),
           ],

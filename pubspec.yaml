@@ -30,7 +30,7 @@ dependencies:
   flutter_ringtone_player: ^3.0.0
   flutter:
     sdk: flutter
-  shared_preferences:
+  shared_preferences: ^2.0.15
   flutter_overboard:
   fcm_config:
 
