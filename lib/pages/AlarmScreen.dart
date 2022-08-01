@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'dart:async';
 import 'package:flutter_ringtone_player/flutter_ringtone_player.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 
 class AlarmScreen extends StatefulWidget {
@@ -34,13 +36,6 @@ class _AlarmState extends State<AlarmScreen> {
     showToast(context, data);
   }
 
-  void deleteAlarm(BuildContext context) async {
-    var methodChannel = MethodChannel("cheeseball.demo_alarm_manager");
-    String data = await methodChannel.invokeMethod("deleteAlarm");
-    debugPrint(data);
-    showToast(context, data);
-  }
-
   void showToast(BuildContext context, String data) {
     Scaffold.of(context).showSnackBar(SnackBar(content: Text(data),));
   }
@@ -62,6 +57,10 @@ class _AlarmState extends State<AlarmScreen> {
         startAlarmService(context);
       });
     }
+    save_TimeOfDay();
+  }
+
+  void Ringtone(Timer timer) {
     if (_time == TimeOfDay.now()){
       FlutterRingtonePlayer.playAlarm(
         looping: true, // Androidのみ。ストップするまで繰り返す
@@ -71,8 +70,55 @@ class _AlarmState extends State<AlarmScreen> {
     }
   }
 
+  void save_TimeOfDay (){
+    DateTime now = DateTime.now();
+    TimeOfDay _selectedTime = TimeOfDay(hour: 10, minute: 00);
+    _saveTime(String key, String value) async {
+      var prefs = await SharedPreferences.getInstance();
+      prefs.setString(key, value);
+    }
+    if (_time != null) {
+      setState(() {
+        _selectedTime = _time;
+        _saveTime('time',  DateTime(
+          now.year,//DateTime
+          now.month,//DateTime
+          now.day,//DateTime
+          _selectedTime.hour, // TimeOfDay
+          _selectedTime.minute, //TimeOfDay
+        ).toString());
+      });
+    }
+  }
+
+  _restoreValues() async {
+    var prefs = await SharedPreferences.getInstance();
+    TimeOfDay _selectedTime = TimeOfDay(hour: 10, minute: 00);
+    String stringTimeData = prefs.getString('time') ?? "2022-08-01 10:00:00.000";
+
+    if (stringTimeData != "2022-08-01 10:00:00.000") {
+      setState(() {
+        _selectedTime = TimeOfDay.fromDateTime(
+            DateTime.parse(stringTimeData));
+      });
+
+      print("Time Current: ${_time.toString().substring(10, 15)}");
+      setState(() {
+        _time = _selectedTime;
+        _timeSet = true;
+        _hour = int.parse(_time.toString().substring(10, 12));
+        _minute = int.parse(_time.toString().substring(13, 15));
+        timeInMillies = DateTime(_year, _month, _day, _hour, _minute)
+            .millisecondsSinceEpoch;
+        print(timeInMillies);
+        startAlarmService(context);
+      });
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
+    _restoreValues();
     return Scaffold(
       appBar: AppBar(
         leading: Icon(Icons.access_alarm),
@@ -106,25 +152,9 @@ class _AlarmState extends State<AlarmScreen> {
                         ),
                         onPressed: () {
                           _selectTime(context);
+                          Timer.periodic(const Duration(minutes: 1), Ringtone);
                         }),
                     ),
-                    _timeSet
-                        ? ElevatedButton(
-                      child: Text(
-                          "Delete Alarm for ${_time.toString().substring(
-                              10, 15)}"),
-                      style: ElevatedButton.styleFrom(
-                        primary: Colors.redAccent,
-                        onPrimary: Colors.white,
-                      ),
-                      onPressed: () {
-                        setState(() {
-                          _timeSet = false;
-                        });
-                        deleteAlarm(context);
-                      },
-                    )
-                        : Container()
                   ],
                 ),
               ),

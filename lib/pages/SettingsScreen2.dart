@@ -83,6 +83,7 @@ class _QrScanViewState extends State<SettingsScreen2> {
         );
       } else {
         if (scanData.code == 'Good_up アラーム停止')
+          FlutterRingtonePlayer.stop(); // アラームを停止する
           DocumentSnapshot snapshot = await FirebaseFirestore.instance.collection('money').doc('money').get();
           print(snapshot['wallet']);
           CollectionReference money = FirebaseFirestore.instance.collection('money');
@@ -90,7 +91,6 @@ class _QrScanViewState extends State<SettingsScreen2> {
           money.doc('money').update({
             'wallet': (int.parse(snapshot['wallet']) + 20).toString(),
           });
-          FlutterRingtonePlayer.stop(); // アラームを停止する
         var result = await showDialog<int>(
           context: context,
           barrierDismissible: false,
